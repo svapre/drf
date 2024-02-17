@@ -15,7 +15,6 @@ class ProductListCreateAPIView(UserQuerySetMixin, StaffEditorPermissionMixin, ge
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
-    authentication_classes = [authentication.SessionAuthentication, authentication.TokenAuthentication]
 
 
     def perform_create(self, serializer):
