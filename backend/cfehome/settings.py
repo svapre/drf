@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_simplejwt',
+    'corsheaders',
 
     # Third party api
     'algoliasearch_django',
@@ -55,7 +56,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.common.CommonMiddleware',
 ]
+
+CORS_URLS_REGEX = r"^/api/.*"
+CORS_ALLOWED_ORIGINS = []
+if DEBUG:
+    CORS_ALLOWED_ORIGINS = [
+        "http://localhost:8111",
+        "https://127.0.0.1:8111",
+    ]
 
 ROOT_URLCONF = 'cfehome.urls'
 
